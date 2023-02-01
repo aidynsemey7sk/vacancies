@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Добавление времени к вакансии</h1>
+<a class="nav-link" href="{% url 'create_time' %}"><button type="submit" class="btn btn-primary">Создать время</button></a>
+<div class="control">
+    <div class="col-md-4">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for time in times %}
+                <div class="card">
+                    <p>{{time}}</p>
+                    <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="times" value="{{time.id}}" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">Выбрать</label>
+                    </div>
+                </div>
+
+
+
+            {% endfor %}
+            <br>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

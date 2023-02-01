@@ -1,0 +1,36 @@
+h1 {
+    font-size: 40pt;
+    text-transform: uppercase;
+    text-align: center;
+    color: red;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.grid-example-1 {
+  grid-template-columns: repeat(3, 1fr);
+  margin: 30px auto;
+  grid-gap: 10px;
+  display: grid;
+}
+
+ul.hr {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+   }
+
+ul.hr li {
+    display: inline-block; /* Строчно-блочный элемент */
+    border: 1px solid #000; /* Рамка вокруг текста */
+    padding: 3px;
+   }
+
+.card {
+    padding: 4px;
+    }
+

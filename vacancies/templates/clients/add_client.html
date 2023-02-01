@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Добавление времени к вакансии</h1>
+
+<div class="control">
+    <a class="nav-link" href="{% url 'create_client' %}"><button type="submit" class="btn btn-primary">Создать клиента</button><span class="sr-only">(current)</span></a>
+    <div class="col-md-4">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for client in clients %}
+                <div class="card">
+                    <p>{{client}}</p>
+                    <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="clients" value="{{client.id}}" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">Выбрать</label>
+                    </div>
+                </div>
+
+
+
+            {% endfor %}
+            <br>
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

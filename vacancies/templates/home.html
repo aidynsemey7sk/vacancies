@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Вакансии на сегодня</h1>
+
+<br>
+<br>
+<div class=grid-example-1">
+
+{% for vacancy in vacancies %}
+    <div class="card">
+      <div class="container">
+        <h4><b>{{vacancy.title}}</b></h4>
+        <p>{{vacancy.text}}</p>
+          <ul class="hr">
+              Аккаунт:
+              {{vacancy.client.name}}
+          <a href="{% url 'add_client' vacancy.id%}"><button type="submit" class="btn btn-primary">Добавить аккаунт</button></a>
+
+          <a href="{% url 'remove_client' vacancy.id%}"><button type="submit" class="btn btn-danger">Убрать все аккаунты</button></a>
+          </ul>
+          <ul class="hr">
+              Чат:
+              {{vacancy.chat.name}}
+              <a href="{% url 'add_chat' vacancy.id%}"><button type="submit" class="btn btn-primary">Добавить чат</button></a>
+              <a href="{% url 'remove_chat' vacancy.id%}"><button type="submit" class="btn btn-danger">Убрать все чаты</button></a>
+          </ul>
+          <ul class="hr">
+              Время:
+              {% for time in vacancy.time.all %}
+              <li>{{time.time}}</li>
+              {% endfor %}
+              <a href="{% url 'add_time' vacancy.id%}"><button type="submit" class="btn btn-primary">Добавить время</button></a>
+              <a href="{% url 'remove_time' vacancy.id%}"><button type="submit" class="btn btn-danger">Убрать все время</button></a>
+          </ul>
+
+      </div>
+        <a class="nav-link" href="{% url 'update_vacancy' vacancy.id %}"><button type="submit" class="btn btn-primary">Изменить вакансию</button></a>
+        <a class="nav-link" href="{% url 'remove_vacancy' vacancy.id %}"><button type="submit" class="btn btn-danger">Убрать вакансию</button></a>
+    </div>
+    <br>
+    {% endfor %}
+</div>
+{% endblock %}

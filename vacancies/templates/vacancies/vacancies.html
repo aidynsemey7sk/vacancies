@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Все вакансии</h1>
+<a class="nav-link" href="{% url 'create_vacancy' %}"><button type="submit" class="btn btn-primary">Создать вакансию</button></a>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="grid-example-1">
+    {% for vacancy in vacancies %}
+    <div>
+        <div class="card">
+      <div class="container">
+        <h4><b>{{vacancy.title}}</b></h4>
+        <p>{{vacancy.text}}</p>
+
+      </div>
+            <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="vacancies" value="{{vacancy.id}}" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">Выбрать</label>
+            </div>
+        </div>
+
+
+
+
+    {% endfor %}
+    </div>
+    </div>
+
+<button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+
+
+
+
+
+
+{% endblock %}
